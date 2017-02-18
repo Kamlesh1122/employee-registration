@@ -1,0 +1,118 @@
+CREATE TABLE tbl_state(
+   state_id int not null auto_increment,
+   state_name varchar(30) not null,
+   date_created datetime,
+   PRIMARY KEY (state_id)
+);
+
+INSERT INTO `employee_registration`.`tbl_state` (`state_name`, `date_created`) VALUES ('Gujarat', current_timestamp());
+INSERT INTO `employee_registration`.`tbl_state` (`state_name`, `date_created`) VALUES ('Maharashtra', current_timestamp());
+INSERT INTO `employee_registration`.`tbl_state` (`state_name`, `date_created`) VALUES ('Tamilnadu', current_timestamp());
+INSERT INTO `employee_registration`.`tbl_state` (`state_name`, `date_created`) VALUES ('Punjab', current_timestamp());
+
+
+
+CREATE TABLE tbl_city
+(
+	city_Id int not null auto_increment,
+	city_name varchar(30) not null,
+	state_id int not null ,
+	date_created datetime,
+	PRIMARY KEY (city_Id),
+    FOREIGN KEY (state_id) REFERENCES tbl_state(state_id)
+)
+
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Ahmedabad', '1',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Surat', '1',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Vadodara', '1',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Rajkot', '1',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Nagpur', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Thane', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Pimpri-Chinchwad', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Nashik', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Mumbai', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Pune', '2',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Chennai', '3',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Coimbatore', '3',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Madurai', '3',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Tiruchirappalli', '3',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Ludhiana', '4',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Bathinda', '4',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Hoshiarpur', '4',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_city` (`city_name`, `state_id`, `date_created`) VALUES ('Fazilka', '4',current_timestamp());
+
+
+CREATE TABLE tbl_department(
+   dept_id int not null auto_increment,
+   dept_name varchar(30) not null,
+   date_created datetime,
+   PRIMARY KEY (dept_id)
+);
+
+INSERT INTO `employee_registration`.`tbl_department` (`dept_name`, `date_created`) VALUES ('Computer',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_department` (`dept_name`, `date_created`) VALUES ('Mechnical',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_department` (`dept_name`, `date_created`) VALUES ('Humanresource',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_department` (`dept_name`, `date_created`) VALUES ('Admin',current_timestamp());
+INSERT INTO `employee_registration`.`tbl_department` (`dept_name`, `date_created`) VALUES ('Account',current_timestamp());
+
+
+
+
+CREATE TABLE tbl_employee
+(
+	emp_Id int not null auto_increment,
+	emp_name varchar(30) not null,
+    gender varchar(10) not null,
+    salary DEC(10,2) not null,
+	dept_id int not null ,
+	Address text not null,
+    city_id int not null ,
+	date_created datetime,
+	PRIMARY KEY (emp_Id),
+    FOREIGN KEY (dept_id) REFERENCES tbl_department(dept_id),
+    FOREIGN KEY (city_id) REFERENCES tbl_city(city_id)
+)
+
+
+
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('rahul', 'Male', '10000.00', '2', '2, SP road', '4', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('parag', 'Male', '25345.00', '4', '2, SP road', '7', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('mitesh', 'Male', '45785.00', '2', '2, SP road', '5', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('rakesh', 'Male', '10000.00', '1', '2, SP road', '6', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Nadesh', 'Male', '65421.00', '4', '2, SP road', '8', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Delroy', 'Male', '45124.00', '3', '2, SP road', '9', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Olu', 'Male', '12000.00', '2', '2, SP road', '10', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Mukesh', 'Male', '12546.00', '1', '2, SP road', '11', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('vipul', 'Male', '45124.00', '2', '2, SP road', '12', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('shashikant', 'Male', '10000.00', '3', '2, SP road', '13', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Nagesh', 'Male', '15000.00', '4', '2, SP road', '14', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('viral', 'Male', '8000.00', '4', '2, SP road', '15', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('jaydeep', 'Male', '10000.00', '2', '2, SP road', '16', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('pankaj', 'Male', '14000.00', '3', '2, SP road', '17', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('vijay', 'Male', '33000.00', '1', '2, SP road', '18', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('suyog', 'Male', '44000.00', '2', '2, SP road', '1', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Ankita', 'Female', '14000.00', '3', '2, SP road', '2', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Priyanka', 'Female', '19000.00', '2', '2, SP road', '3', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Meghana', 'Female', '10000.00', '1', '304-rangoot street', '4', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Mital', 'Female', '22000.00', '2', '304-rangoot street', '5', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Payal', 'Female', '9000.00', '3', '304-rangoot street', '6', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Anajali', 'Female', '45124.00', '4', '304-rangoot street', '7', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Rita', 'Female', '12000.00', '4', '304-rangoot street', '8', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Shilpa', 'Female', '10000.00', '4', '304-rangoot street', '9', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Jigna', 'Female', '18000.00', '4', '304-rangoot street', '10', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Mehul', 'Male', '15500.00', '4', '304-rangoot street', '11', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Jagpreet', 'Male', '45124.00', '2', '304-rangoot street', '12', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Vikas', 'Male', '32154.00', '2', '304-rangoot street', '13', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Shikhir', 'Male', '10000.00', '1', '304-rangoot street', '14', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Mayur', 'Male', '54133.00', '1', '2, SP road', '15', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Poonam', 'Female', '14000.00', '2', '304-rangoot street', '16', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Maya', 'Female', '21213.00', '3', '304-rangoot street', '17', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Janki', 'Female', '10000.00', '4', '304-rangoot street', '18', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Vatshala', 'Female', '32156.00', '1', '304-rangoot street', '1', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Renuka', 'Female', '14000.00', '3', '304-rangoot street', '2', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Ashok', 'Male', '10000.00', '2', '304-rangoot street', '3', '2017-02-18 23:56:49');
+UPDATE `employee_registration`.`tbl_employee` SET `emp_name`='Kamlesh', `salary`='30000.00', `address`='2, SP road', `city_id`='1' WHERE `emp_Id`='6';
+UPDATE `employee_registration`.`tbl_employee` SET `emp_name`='Jay', `salary`='21000.00', `address`='2, SP road' WHERE `emp_Id`='8';
+UPDATE `employee_registration`.`tbl_employee` SET `emp_name`='Ankit', `salary`='16000.00', `dept_id`='4', `address`='2, SP road', `city_id`='3' WHERE `emp_Id`='9';
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Janak', 'Male', '10452.00', '1', '304-rangoot street', '4', '2017-02-18 23:56:49');
+INSERT INTO `employee_registration`.`tbl_employee` (`emp_name`, `gender`, `salary`, `dept_id`, `address`, `city_id`, `date_created`) VALUES ('Prashant', 'Male', '8002.00', '3', '304-rangoot street', '5', '2017-02-18 23:56:49');
